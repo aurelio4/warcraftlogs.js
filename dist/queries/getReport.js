@@ -5,7 +5,7 @@ const graphql_request_1 = require("graphql-request");
 const getReportQuery = (reportId) => (0, graphql_request_1.gql) `
     {
         reportData {
-            report(code: "jr9APvthqVMbYXz8") {
+            report(code: "${reportId}") {
                 owner {
                     name
                     id

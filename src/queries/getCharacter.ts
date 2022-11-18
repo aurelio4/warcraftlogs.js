@@ -18,4 +18,24 @@ const getCharacterByIdQuery = (userId: number) => gql`
 	}
 `
 
-export { getCharacterByIdQuery }
+const getCharacterByNameQuery = (name: String, serverSlug: String, serverRegion: String) => gql`
+	query getCharacter(
+		$characterName: String! = "${name}",
+		$characterServerSlug: String! = "${serverSlug}",
+		$characterRegion: String! = "${serverRegion}",
+	) {
+		characterData {
+			character(
+				name: $characterName,
+				serverSlug: $characterServerSlug, 
+				serverRegion: $characterRegion
+			) {
+				name
+				server{name}
+				server{region{name}}
+			}
+		}
+	}
+`
+
+export { getCharacterByIdQuery, getCharacterByNameQuery }

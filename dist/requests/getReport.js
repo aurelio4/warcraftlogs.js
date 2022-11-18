@@ -13,8 +13,13 @@ exports.getReport = void 0;
 const client_1 = require("../api/client");
 const queries_1 = require("../queries");
 const getReport = (reportId) => __awaiter(void 0, void 0, void 0, function* () {
-    const data = yield client_1.client.request((0, queries_1.getReportQuery)(reportId));
-    return data;
+    try {
+        const data = yield client_1.client.request((0, queries_1.getReportQuery)(reportId));
+        return data;
+    }
+    catch (err) {
+        return err.response.errors;
+    }
 });
 exports.getReport = getReport;
 //# sourceMappingURL=getReport.js.map

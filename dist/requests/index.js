@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getReport = exports.getCharacterById = void 0;
+exports.getReport = exports.getCharacterByName = exports.getCharacterById = void 0;
 var getCharacter_1 = require("./getCharacter");
 Object.defineProperty(exports, "getCharacterById", { enumerable: true, get: function () { return getCharacter_1.getCharacterById; } });
+Object.defineProperty(exports, "getCharacterByName", { enumerable: true, get: function () { return getCharacter_1.getCharacterByName; } });
 var getReport_1 = require("./getReport");
 Object.defineProperty(exports, "getReport", { enumerable: true, get: function () { return getReport_1.getReport; } });
 //# sourceMappingURL=index.js.map

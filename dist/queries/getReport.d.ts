@@ -1,2 +1,2 @@
-declare const getReportQuery: (reportId: string) => string;
+declare const getReportQuery: (reportId: String) => string;
 export { getReportQuery };

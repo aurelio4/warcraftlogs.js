@@ -1,2 +1,3 @@
 declare const getCharacterByIdQuery: (userId: number) => string;
-export { getCharacterByIdQuery };
+declare const getCharacterByNameQuery: (name: String, serverSlug: String, serverRegion: String) => string;
+export { getCharacterByIdQuery, getCharacterByNameQuery };
