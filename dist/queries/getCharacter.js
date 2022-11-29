@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCharacterByNameQuery = exports.getCharacterByIdQuery = void 0;
+exports.getCharacterByName = exports.getCharacterById = void 0;
 const graphql_request_1 = require("graphql-request");
-const getCharacterByIdQuery = (userId) => (0, graphql_request_1.gql) `
+const getCharacterById = (userId) => (0, graphql_request_1.gql) `
 	{
 		characterData {
 			character(id: ${userId}) {
@@ -19,8 +19,8 @@ const getCharacterByIdQuery = (userId) => (0, graphql_request_1.gql) `
 		}
 	}
 `;
-exports.getCharacterByIdQuery = getCharacterByIdQuery;
-const getCharacterByNameQuery = (name, serverSlug, serverRegion) => (0, graphql_request_1.gql) `
+exports.getCharacterById = getCharacterById;
+const getCharacterByName = (name, serverSlug, serverRegion) => (0, graphql_request_1.gql) `
 	query getCharacter(
 		$characterName: String! = "${name}",
 		$characterServerSlug: String! = "${serverSlug}",
@@ -39,5 +39,5 @@ const getCharacterByNameQuery = (name, serverSlug, serverRegion) => (0, graphql_
 		}
 	}
 `;
-exports.getCharacterByNameQuery = getCharacterByNameQuery;
+exports.getCharacterByName = getCharacterByName;
 //# sourceMappingURL=getCharacter.js.map

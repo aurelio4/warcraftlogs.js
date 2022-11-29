@@ -1,2 +1,2 @@
-export { getCharacterByIdQuery, getCharacterByNameQuery } from './getCharacter'
-export { getReportQuery } from './getReport'
+export { getCharacterById, getCharacterByName } from './getCharacter'
+export { getReport } from './getReport'

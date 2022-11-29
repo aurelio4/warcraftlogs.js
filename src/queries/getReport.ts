@@ -1,6 +1,6 @@
 import { gql } from "graphql-request"
 
-const getReportQuery = (reportId: String) => gql`
+const getReport = (reportId: String) => gql`
     {
         reportData {
             report(code: "${reportId}") {
@@ -13,4 +13,4 @@ const getReportQuery = (reportId: String) => gql`
     }
 `
 
-export { getReportQuery }
+export { getReport }

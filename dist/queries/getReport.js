@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getReportQuery = void 0;
+exports.getReport = void 0;
 const graphql_request_1 = require("graphql-request");
-const getReportQuery = (reportId) => (0, graphql_request_1.gql) `
+const getReport = (reportId) => (0, graphql_request_1.gql) `
     {
         reportData {
             report(code: "${reportId}") {
@@ -14,5 +14,5 @@ const getReportQuery = (reportId) => (0, graphql_request_1.gql) `
         }
     }
 `;
-exports.getReportQuery = getReportQuery;
+exports.getReport = getReport;
 //# sourceMappingURL=getReport.js.map

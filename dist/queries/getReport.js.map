@@ -1,1 +1,1 @@
-{"version":3,"file":"getReport.js","sourceRoot":"","sources":["../../src/queries/getReport.ts"],"names":[],"mappings":";;;AAAA,qDAAqC;AAErC,MAAM,cAAc,GAAG,CAAC,QAAgB,EAAE,EAAE,CAAC,IAAA,qBAAG,EAAA;;;4BAGpB,QAAQ;;;;;;;;CAQnC,CAAA;AAEQ,wCAAc"}
+{"version":3,"file":"getReport.js","sourceRoot":"","sources":["../../src/queries/getReport.ts"],"names":[],"mappings":";;;AAAA,qDAAqC;AAErC,MAAM,SAAS,GAAG,CAAC,QAAgB,EAAE,EAAE,CAAC,IAAA,qBAAG,EAAA;;;4BAGf,QAAQ;;;;;;;;CAQnC,CAAA;AAEQ,8BAAS"}

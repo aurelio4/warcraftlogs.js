@@ -1,6 +1,6 @@
 import { gql } from "graphql-request"
 
-const getCharacterByIdQuery = (userId: number) => gql`
+const getCharacterById = (userId: number) => gql`
 	{
 		characterData {
 			character(id: ${userId}) {
@@ -18,7 +18,7 @@ const getCharacterByIdQuery = (userId: number) => gql`
 	}
 `
 
-const getCharacterByNameQuery = (name: String, serverSlug: String, serverRegion: String) => gql`
+const getCharacterByName = (name: String, serverSlug: String, serverRegion: String) => gql`
 	query getCharacter(
 		$characterName: String! = "${name}",
 		$characterServerSlug: String! = "${serverSlug}",
@@ -38,4 +38,4 @@ const getCharacterByNameQuery = (name: String, serverSlug: String, serverRegion:
 	}
 `
 
-export { getCharacterByIdQuery, getCharacterByNameQuery }
+export { getCharacterById, getCharacterByName }

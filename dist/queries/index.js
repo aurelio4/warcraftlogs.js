@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getReportQuery = exports.getCharacterByNameQuery = exports.getCharacterByIdQuery = void 0;
+exports.getReport = exports.getCharacterByName = exports.getCharacterById = void 0;
 var getCharacter_1 = require("./getCharacter");
-Object.defineProperty(exports, "getCharacterByIdQuery", { enumerable: true, get: function () { return getCharacter_1.getCharacterByIdQuery; } });
-Object.defineProperty(exports, "getCharacterByNameQuery", { enumerable: true, get: function () { return getCharacter_1.getCharacterByNameQuery; } });
+Object.defineProperty(exports, "getCharacterById", { enumerable: true, get: function () { return getCharacter_1.getCharacterById; } });
+Object.defineProperty(exports, "getCharacterByName", { enumerable: true, get: function () { return getCharacter_1.getCharacterByName; } });
 var getReport_1 = require("./getReport");
-Object.defineProperty(exports, "getReportQuery", { enumerable: true, get: function () { return getReport_1.getReportQuery; } });
+Object.defineProperty(exports, "getReport", { enumerable: true, get: function () { return getReport_1.getReport; } });
 //# sourceMappingURL=index.js.map
