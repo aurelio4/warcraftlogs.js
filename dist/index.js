@@ -11,30 +11,44 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WCLClient = exports.WCLQuery = void 0;
 const graphql_request_1 = require("graphql-request");
-class WCLClient {
-    constructor(token) {
-        this.wotlkClient = WCLClient.createClient(WCLClient.WOTLK_ENDPOINT, token);
-        this.retailClient = WCLClient.createClient(WCLClient.RETAIL_ENDPOINT, token);
+var WCLClient;
+(function (WCLClient) {
+    class wotlk {
+        constructor(token) {
+            this.wotlkClient = WCLClient.wotlk.createClient(WCLClient.wotlk.WOTLK_ENDPOINT, token);
+        }
+        static createClient(url, token) {
+            return new graphql_request_1.GraphQLClient(url, {
+                headers: { authorization: `Bearer ${token}` },
+            });
+        }
+        request(wclQuery) {
+            return __awaiter(this, void 0, void 0, function* () {
+                try {
+                    const data = yield this.wotlkClient.request(wclQuery);
+                    return data;
+                }
+                catch (err) {
+                    return err;
+                }
+            });
+        }
     }
-    static createClient(url, token) {
-        return new graphql_request_1.GraphQLClient(url, {
-            headers: { authorization: `Bearer ${token}` },
-        });
+    wotlk.WOTLK_ENDPOINT = "https://classic.warcraftlogs.com/api/v2/client";
+    WCLClient.wotlk = wotlk;
+    class retail {
+        constructor(token) {
+            this.retailClient = WCLClient.retail.createClient(WCLClient.retail.RETAIL_ENDPOINT, token);
+        }
+        static createClient(url, token) {
+            return new graphql_request_1.GraphQLClient(url, {
+                headers: { authorization: `Bearer ${token}` },
+            });
+        }
     }
-    wotlkRequest(wclQuery) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const data = yield this.wotlkClient.request(wclQuery);
-                return data;
-            }
-            catch (err) {
-                return err;
-            }
-        });
-    }
-}
+    retail.RETAIL_ENDPOINT = "https://www.warcraftlogs.com/api/v2/client";
+    WCLClient.retail = retail;
+})(WCLClient || (WCLClient = {}));
 exports.WCLClient = WCLClient;
-WCLClient.WOTLK_ENDPOINT = "https://classic.warcraftlogs.com/api/v2/client";
-WCLClient.RETAIL_ENDPOINT = "https://www.warcraftlogs.com/api/v2/client";
 exports.WCLQuery = require("./queries");
 //# sourceMappingURL=index.js.map
