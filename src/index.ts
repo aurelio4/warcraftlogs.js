@@ -1,13 +1,15 @@
 import { GraphQLClient } from "graphql-request"
+import { EncounterData } from './types/index'
+import { getFightData } from './queries/getCharacter'
 
 namespace WCLClient {
-    export class wotlk {
+    export class Wotlk {
         private static readonly WOTLK_ENDPOINT: string = "https://classic.warcraftlogs.com/api/v2/client"
 
         private wotlkClient: GraphQLClient
 
         constructor(token: string) {
-            this.wotlkClient = WCLClient.wotlk.createClient(WCLClient.wotlk.WOTLK_ENDPOINT, token)
+            this.wotlkClient = WCLClient.Wotlk.createClient(WCLClient.Wotlk.WOTLK_ENDPOINT, token)
         }
 
         private static createClient(url: string, token: string): GraphQLClient {
@@ -16,23 +18,18 @@ namespace WCLClient {
             })
         }
 
-        public async request(wclQuery: any): Promise<any> {
-            try {
-                const data = await this.wotlkClient.request(wclQuery)
-                return data
-            } catch(err) {
-                return err
-            }
-        }
+				public async getCharacterFightData(name: string, serverSlug: string, serverRegion: string, zoneID: Number): Promise<EncounterData> {
+					return await this.wotlkClient.request(getFightData(name, serverSlug, serverRegion, zoneID))
+				}
     }
 
-    export class retail {
+    export class Retail {
         private static readonly RETAIL_ENDPOINT: string = "https://www.warcraftlogs.com/api/v2/client"
 
         private retailClient: GraphQLClient
 
         constructor(token: string) {
-            this.retailClient = WCLClient.retail.createClient(WCLClient.retail.RETAIL_ENDPOINT, token)
+            this.retailClient = WCLClient.Retail.createClient(WCLClient.Retail.RETAIL_ENDPOINT, token)
         }
 
         private static createClient(url: string, token: string): GraphQLClient {
@@ -43,5 +40,4 @@ namespace WCLClient {
     }
 }
 
-export * as WCLQuery from './queries'
 export { WCLClient }
