@@ -1,17 +1,17 @@
+import { EncounterData } from './types/index';
 declare namespace WCLClient {
-    class wotlk {
+    class Wotlk {
         private static readonly WOTLK_ENDPOINT;
         private wotlkClient;
         constructor(token: string);
         private static createClient;
-        request(wclQuery: any): Promise<any>;
+        getCharacterFightData(name: string, serverSlug: string, serverRegion: string, zoneID: Number): Promise<EncounterData>;
     }
-    class retail {
+    class Retail {
         private static readonly RETAIL_ENDPOINT;
         private retailClient;
         constructor(token: string);
         private static createClient;
     }
 }
-export * as WCLQuery from './queries';
 export { WCLClient };

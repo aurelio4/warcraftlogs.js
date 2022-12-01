@@ -9,36 +9,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WCLClient = exports.WCLQuery = void 0;
+exports.WCLClient = void 0;
 const graphql_request_1 = require("graphql-request");
+const getCharacter_1 = require("./queries/getCharacter");
 var WCLClient;
 (function (WCLClient) {
-    class wotlk {
+    class Wotlk {
         constructor(token) {
-            this.wotlkClient = WCLClient.wotlk.createClient(WCLClient.wotlk.WOTLK_ENDPOINT, token);
+            this.wotlkClient = WCLClient.Wotlk.createClient(WCLClient.Wotlk.WOTLK_ENDPOINT, token);
         }
         static createClient(url, token) {
             return new graphql_request_1.GraphQLClient(url, {
                 headers: { authorization: `Bearer ${token}` },
             });
         }
-        request(wclQuery) {
+        getCharacterFightData(name, serverSlug, serverRegion, zoneID) {
             return __awaiter(this, void 0, void 0, function* () {
-                try {
-                    const data = yield this.wotlkClient.request(wclQuery);
-                    return data;
-                }
-                catch (err) {
-                    return err;
-                }
+                return yield this.wotlkClient.request((0, getCharacter_1.getFightData)(name, serverSlug, serverRegion, zoneID));
             });
         }
     }
-    wotlk.WOTLK_ENDPOINT = "https://classic.warcraftlogs.com/api/v2/client";
-    WCLClient.wotlk = wotlk;
-    class retail {
+    Wotlk.WOTLK_ENDPOINT = "https://classic.warcraftlogs.com/api/v2/client";
+    WCLClient.Wotlk = Wotlk;
+    class Retail {
         constructor(token) {
-            this.retailClient = WCLClient.retail.createClient(WCLClient.retail.RETAIL_ENDPOINT, token);
+            this.retailClient = WCLClient.Retail.createClient(WCLClient.Retail.RETAIL_ENDPOINT, token);
         }
         static createClient(url, token) {
             return new graphql_request_1.GraphQLClient(url, {
@@ -46,9 +41,8 @@ var WCLClient;
             });
         }
     }
-    retail.RETAIL_ENDPOINT = "https://www.warcraftlogs.com/api/v2/client";
-    WCLClient.retail = retail;
+    Retail.RETAIL_ENDPOINT = "https://www.warcraftlogs.com/api/v2/client";
+    WCLClient.Retail = Retail;
 })(WCLClient || (WCLClient = {}));
 exports.WCLClient = WCLClient;
-exports.WCLQuery = require("./queries");
 //# sourceMappingURL=index.js.map
