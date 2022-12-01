@@ -38,4 +38,22 @@ const getCharacterByName = (name: String, serverSlug: String, serverRegion: Stri
 	}
 `
 
-export { getCharacterById, getCharacterByName }
+// zoneID 1015 = naxx, should be passed through from frontend
+const getFightData = (name: String, serverSlug: string, serverRegion: String, zoneID: Number) => gql`
+{
+	characterData {
+		character(
+			name: "${name}",
+			serverSlug: "${serverSlug}",
+			serverRegion: "${serverRegion}"
+		) {
+			name
+			faction
+			classID
+			zoneRankings(zoneID: ${zoneID})
+		}
+	}
+}
+`
+
+export { getCharacterById, getCharacterByName, getFightData }

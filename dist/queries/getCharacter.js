@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCharacterByName = exports.getCharacterById = void 0;
+exports.getFightData = exports.getCharacterByName = exports.getCharacterById = void 0;
 const graphql_request_1 = require("graphql-request");
 const getCharacterById = (userId) => (0, graphql_request_1.gql) `
 	{
@@ -40,4 +40,22 @@ const getCharacterByName = (name, serverSlug, serverRegion) => (0, graphql_reque
 	}
 `;
 exports.getCharacterByName = getCharacterByName;
+// zoneID 1015 = naxx, should be passed through from frontend
+const getFightData = (name, serverSlug, serverRegion, zoneID) => (0, graphql_request_1.gql) `
+{
+	characterData {
+		character(
+			name: "${name}",
+			serverSlug: "${serverSlug}",
+			serverRegion: "${serverRegion}"
+		) {
+			name
+			faction
+			classID
+			zoneRankings(zoneID: ${zoneID})
+		}
+	}
+}
+`;
+exports.getFightData = getFightData;
 //# sourceMappingURL=getCharacter.js.map
