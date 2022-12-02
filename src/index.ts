@@ -18,9 +18,9 @@ namespace WCLClient {
             })
         }
 
-				public async getCharacterFightData(name: string, serverSlug: string, serverRegion: string, zoneID: Number): Promise<EncounterData> {
-					return await this.wotlkClient.request(getFightData(name, serverSlug, serverRegion, zoneID))
-				}
+        public async getCharacterFightData(name: string, serverSlug: string, serverRegion: string, zoneID: Number): Promise<EncounterData> {
+            return await this.wotlkClient.request(getFightData(name, serverSlug, serverRegion, zoneID))
+        }
     }
 
     export class Retail {

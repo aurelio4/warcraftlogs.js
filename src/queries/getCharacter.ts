@@ -48,7 +48,7 @@ const getFightData = (name: String, serverSlug: string, serverRegion: String, zo
 			serverRegion: "${serverRegion}"
 		) {
 			name
-			faction
+			faction{name}
 			classID
 			zoneRankings(zoneID: ${zoneID})
 		}

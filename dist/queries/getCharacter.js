@@ -50,7 +50,7 @@ const getFightData = (name, serverSlug, serverRegion, zoneID) => (0, graphql_req
 			serverRegion: "${serverRegion}"
 		) {
 			name
-			faction
+			faction{name}
 			classID
 			zoneRankings(zoneID: ${zoneID})
 		}
