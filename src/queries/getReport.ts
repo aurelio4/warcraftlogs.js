@@ -1,15 +1,17 @@
 import { gql } from "graphql-request"
 
 const getReport = (reportId: String) => gql`
-    {
-        reportData {
-            report(code: "${reportId}") {
-                owner {
-                    name
-                    id
-                }
-            }
-        }
+	query getReport (
+		$reportId: String! = "${reportId}"
+	) {
+			reportData {
+					report(code: $reportId) {
+							owner {
+									name
+									id
+							}
+					}
+			}
     }
 `
 

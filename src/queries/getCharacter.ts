@@ -1,9 +1,11 @@
 import { gql } from "graphql-request"
 
 const getCharacterById = (userId: number) => gql`
-	{
+	query getCharacterID(
+		$characterId: Number! = ${userId}
+	) {
 		characterData {
-			character(id: ${userId}) {
+			character(id: $characterId) {
 				name
 				server {
 					slug
@@ -40,20 +42,25 @@ const getCharacterByName = (name: String, serverSlug: String, serverRegion: Stri
 
 // zoneID 1015 = naxx, should be passed through from frontend
 const getFightData = (name: String, serverSlug: string, serverRegion: String, zoneID: Number) => gql`
-{
-	characterData {
-		character(
-			name: "${name}",
-			serverSlug: "${serverSlug}",
-			serverRegion: "${serverRegion}"
-		) {
-			name
-			faction{name}
-			classID
-			zoneRankings(zoneID: ${zoneID})
+	query getCharacterFight (
+		$characterName: String! = "${name}",
+		$characterServerSlug: String! = "${serverSlug}",
+		$characterServerRegion: String! = "${serverRegion}",
+		$raidZoneID: Number! = ${zoneID}
+	){
+		characterData {
+			character(
+				name: $characterName,
+				serverSlug: $characterServerSlug,
+				serverRegion: $characterServerRegion
+			) {
+				name
+				faction{name}
+				classID
+				zoneRankings(zoneID: $raidZoneID)
+			}
 		}
 	}
-}
 `
 
 export { getCharacterById, getCharacterByName, getFightData }
